@@ -1,3 +1,9 @@
+// The Challenge
+
+// The aim of this exercise is to demonstrate your problem solving and understanding of JavaScript by implementing something found in every unit testing tool - an "assertEquals" method. 
+
+// Notes: This project has an add funaction to find and call out inputs that are not familiar to the program. 
+
 
 class VauleChecker
 {   
@@ -7,9 +13,9 @@ class VauleChecker
         this.Actual = Actual
     } 
 
-    // The VauleType() method finds out weather the inputs Expected and Actual vaules are of the same type.
+    // The ValueType() method finds out weather the inputs Expected and Actual vaules are of the same type.
 
-    VauleType() {     
+    ValueType() {     
 
             return typeof this.Expected == typeof this.Actual ? this.ExactType() : `Expected type ${typeof this.Expected} but found type ${typeof this.Actual}`
     }  
@@ -20,18 +26,19 @@ class VauleChecker
        switch (`${typeof this.Expected}`) {
            case 'number': 
            case 'string':
-                return this.ExactVaule()
+                return this.ExactValue()
                break; 
             case 'object':   
                 return this.ArrayLength()
-            break;  
-            default:
+            break;   
+            default: 
+                return `Unexpected data type ${typeof this.Expected} found, this program can only handle strings, numbers, and arrays`
        }
     }   
 
     // ExactVaule method finds out weather the two inputs Expected and Actural have the exact same input within string or number.
 
-    ExactVaule()
+    ExactValue()
     {
         return this.Expected == this.Actual ? "no error" : `Expected ${this.Expected} but found ${this.Actual}`
     }
@@ -42,26 +49,26 @@ class VauleChecker
 
         if(this.Expected === null) { return 'Nothing has been add' }   
 
-        return this.Expected.length === this.Actual.length ? this.Arraycontent() : `Expected array length ${this.Expected.length} but found ${this.Actual.length}`  
+        return this.Expected.length === this.Actual.length ? this.ArrayContent() : `Expected array length ${this.Expected.length} but found ${this.Actual.length}`  
       
     }
 
     // The Arraycontent method looks through both Expected and Actual to see weather there are any discrepancies.
 
-    Arraycontent()
+    ArrayContent()
     {   
-        let Expected_array = [];
-        let Actual_array = [];
+        let ExpectedArray = [];
+        let ActualArray = [];
 
         for (let index = 0; index < this.Expected.length; index++) {
             if(this.Expected[index] !== this.Actual[index])
             {
-                Expected_array.push(this.Expected[index])
-                Actual_array.push(this.Actual[index])
+                ExpectedArray.push(this.Expected[index])
+                ActualArray.push(this.Actual[index])
             }
         }  
         
-        return !Expected_array.length ? 'no error' : `Expected ${Expected_array.join(" ")} but found ${Actual_array.join(" ")}`
+        return !ExpectedArray.length ? 'no error' : `Expected ${ExpectedArray.join(" ")} but found ${ActualArray.join(" ")}`
     } 
 }  
 
